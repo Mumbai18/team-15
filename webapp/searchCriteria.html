@@ -126,7 +126,6 @@
                         <label>Do you want to search for Donor?</label>
                             <button id="donor" class="btn-style-one" onClick="manipulateDiv2()">Click Here!</button>
                         </div> 
-
                     <div id="div2" style="display: none">
 
                         <div  style="padding-bottom: 20px; float:left;" >
@@ -134,7 +133,14 @@
                         </div>
                         <div class="text-center col-md-4 col-sm-6 col-xs-12" style="padding-bottom: 20px; float:left" >    
                             <button id="amount" class="btn-style-one" onClick="callSearch()">Amount</button>
-                            </div>
+                        </div>
+                    </div> 
+                </div> 
+  
+                <div style="padding-bottom: 50px">
+                    <div  style="padding-bottom: 20px;" >
+                        <label>Do you want to view Donor and Patient Data?</label>
+                        <button id="total" class="btn-style-one" onClick="callTotalData()">Click Here!</button>
                     </div> 
                 </div> 
             </div>
@@ -261,6 +267,10 @@
             window.location = "patientsearchprogram.html?" + prog;
         }
 
+        function callTotalData()
+        {
+            window.location = "totaldata.html";
+        }
 
 
 </script>
