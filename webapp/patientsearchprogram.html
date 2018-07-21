@@ -50,21 +50,43 @@ var tableToExcel = (function() {
 </head>
 <body>
 <script>
-	var program = "emotional"
+	var program = window.location.search;
+  if (program.substring(0, 1) == '?') {
+    program = program.substring(1);
+  }
     program.toLowerCase();
     var program = $.trim(program);
-	db.collection("Patient").where("program", "==", program)
-    .onSnapshot(function(querySnapshot) { 
-    	var cities = [];
-        querySnapshot.forEach(function(doc) {
-            var name = doc.data().name;
-            var state = doc.data().state;
-            var program = doc.data().program;
-            $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
+    if(program === "")
+    {
+
+	    db.collection("Patient")
+        .onSnapshot(function(querySnapshot) { 
+            var cities = [];
+            querySnapshot.forEach(function(doc) {
+                var name = doc.data().name;
+                var state = doc.data().state;
+                var program = doc.data().program;
+                $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
+            });
+            
+            //document.write("Name of the Donors are:", cities.join(", "));
         });
-        
-        //document.write("Name of the Donors are:", cities.join(", "));
-    });
+    }
+    else
+    {
+        db.collection("Patient").where("program", "==", program)
+        .onSnapshot(function(querySnapshot) { 
+            var cities = [];
+            querySnapshot.forEach(function(doc) {
+                var name = doc.data().name;
+                var state = doc.data().state;
+                var program = doc.data().program;
+                $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
+            });
+            
+            //document.write("Name of the Donors are:", cities.join(", "));
+        });
+    }
     function showTableData() {
         document.getElementById('info').innerHTML = "";
         var myTab = document.getElementById('table_id');
