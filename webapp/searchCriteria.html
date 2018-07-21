@@ -15,63 +15,17 @@
   <link rel="stylesheet" href="plugins/slick/slick-theme.css">
   <!-- FancyBox -->
   <link rel="stylesheet" href="plugins/fancybox/jquery.fancybox.min.css">
- 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+  
   <!-- Stylesheets -->
   <link href="css/style.css" rel="stylesheet">
   
   <!--Favicon-->
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-<script src = "https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
-<script src = "https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
-<script type="text/javascript" src="firebase.js"></script>
-<script type="text/javascript">
-function test(){
-if (document.getElementById('maleRadioBtn').checked) {
-  var gender = "M";
-}
-if (document.getElementById('femaleRadioBtn').checked) {
-  var gender = "F";
-}
-    console.log(gender);
-    var x = document.getElementById("typeOfCancer").selectedIndex;
-    var y = document.getElementById("typeOfCancer").options;
-    var a = document.getElementById("stageOfCancer").selectedIndex;
-    var b = document.getElementById("stageOfCancer").options;
-    var p = document.getElementById("income").selectedIndex;
-    var d = document.getElementById("income").options;
-    var name = document.getElementById('name');
-  var phone = document.getElementById('phone');
-  var city = document.getElementById('city');
-  var state = document.getElementById('state');
-  var program = document.getElementById('program');
-  var type = y[x].text;
-  console.log(type);
-  var stage = b[a].text;
-  var income = d[p].text;
-  console.log("Reached");
-  name = name.value;
-  phone = phone.value;
-  city = city.value;
-  state = state.value;
-  var cityRef = db.collection('Patient').doc();
-  var setWithMerge = cityRef.set({
-      name: name,
-      phone: phone,
-      type: type,
-      city: city,
-      state: state,
-      income: income,
-      stage: stage,
-      gender: gender,
-      program: program
-  }, { merge: true });
-};
-</script>
+
 </head>
+
+
 <body>
   <div class="page-wrapper">
     <!-- Preloader -->
@@ -131,85 +85,61 @@ if (document.getElementById('femaleRadioBtn').checked) {
       <!-- /.container-fluid -->
 </nav>
 <!--End Main Header -->
-<!-- <script src="firebase.js"></script> -->
+
 <!-- Contact Section -->
 <section class="blog-section section style-three pb-0" style="padding-top: 5px">
     <div class="container">
         <div class="row">
             <div >
-                <div class="contact-area style-two">
+                <div class="style-two">
                     <div class="section-title text-center">
-                        <h3><span>Register Patient</span></h3>
+                        <h3><span>Search</span></h3>
                     </div>
-                    <form name="register_form" class="default-form contact-form">
-                        <div class="row">
-                            <div >
-                                <div class="form-group" style="padding-top: 0px">
-                                    <input type="text" name="Name" id="name" placeholder="Name" required="">
-                                </div>
-                                <div class="form-group">
-                                        <input type="text" name="Phone" id="phone" placeholder="Phone" required="">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="Date of Birth" placeholder="Date of Birth" required="" id="datepicker">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                                </div>
-                                <div class="form-group">
-                                    <label class="radio-inline"><input type="radio" name="optradio" id="maleRadioBtn">Male</label>
-                                    <label class="radio-inline"><input type="radio" name="optradio" id="femaleRadioBtn">Female</label>  
-                                </div>  
-                                <label>Type of Cancer: </label> 
-                                <div class="form-group">
-                                    <select name="typeOfCancer" id="typeOfCancer">
-                                        <option>Blood Cancer</option>
-                                        <option>Lung Cancer</option>
-                                        <option>Breast Cancer</option>
-                                        <option>Bladder Cancer</option>
-                                        <option>Ovarian Cancer</option>
-                                        <option>Skin Cancer</option>
-                                        <option>Colon Cancer</option>
-                                        <option>Kidney Cancer</option>
-                                    </select>
-                                </div>  
-                                <label>Cancer Stage: </label> 
-                                <div class="form-group">
-                                    <select name="stageOfCancer" id = "stageOfCancer">
-                                        <option>I</option>
-                                        <option>II</option>
-                                        <option>III</option>
-                                        <option>IV</option>
-                                    </select>
-                                </div>   
-                                <div class="form-group">
-                                    <input type="text" name="City" placeholder="City" id="city" required="">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="State" placeholder="State" id="state" required="">
-                                </div>
-                                <label>Monthly Income: </label> 
-                                <div class="form-group">
-                                    <select name="income" id="income">
-                                        <option>less than 5000</option>
-                                        <option>Between 5,000 to 20,000</option>
-                                        <option>Between 20,000 to 50,000</option>
-                                        <option>Above 50,000</option>
-                                    </select>
-                                </div>   
-
-                            </div>
-                            <div>
-                                <div class="text-center col-md-4 col-sm-6 col-xs-12" style="padding-bottom: 20px" >
-                                    <button  type="button" id="log" class="btn btn-secondary" onclick="test()" >Log</button>
-                                </div>                            
-                            </div>
-                            <span></span>
+                    <div class="row">
+                        <div>                          
                         </div>
-                    </form>
-                </div>                      
+                                <span></span>
+                    </div>
+                </div>
+                
+                <div style="padding-bottom: 75px">
+                    <div style="padding-bottom: 20px;" >
+                        <label>Do you want to search for Patient?</label>
+                            <button id="patient" class="btn-style-one" onClick="manipulateDiv1()" >Click here!</button>
+                        </div> 
+                    <div id="div1" style="display:none">
+
+                        <div  style="padding-bottom: 20px; float:left; padding-left: 20px;" >
+                            <input type="text" id="value1">
+                        </div>
+                        <div  style="padding-bottom: 20px; float:left; padding-left: 20px; padding-right: 20px" >
+                            <button id="state" class="btn-style-one" onClick="callPatientSearch()">State</button>
+                        </div>
+                        <div  style="padding-bottom: 10px; padding-left: 20px" >                            
+                            <button id="program" class="btn-style-one" onClick="callPatientProgram()">Program</button>
+                        </div>
+                    </div>
+                </div>
+  
+                <div style="padding-bottom: 50px">
+                    <div  style="padding-bottom: 20px;" >
+                        <label>Do you want to search for Donor?</label>
+                            <button id="donor" class="btn-style-one" onClick="manipulateDiv2()">Click Here!</button>
+                        </div> 
+
+                    <div id="div2" style="display: none">
+
+                        <div  style="padding-bottom: 20px; float:left;" >
+                            <input type="number" id="value2">
+                        </div>
+                        <div class="text-center col-md-4 col-sm-6 col-xs-12" style="padding-bottom: 20px; float:left" >    
+                            <button id="amount" class="btn-style-one" onClick="callSearch()">Amount</button>
+                            </div>
+                    </div> 
+                </div> 
             </div>
         </div>                    
     </div>
-</script>
 </section>
 <!-- End Contact Section -->
 
@@ -285,6 +215,56 @@ if (document.getElementById('femaleRadioBtn').checked) {
         <span class="icon fa fa-angle-up"></span>
       </div>
       
+
+      <script>
+        function manipulateDiv1() 
+        {
+            var x = document.getElementById("div1");
+            var y = document.getElementById("div2");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                y.style.display = "none";
+            } else {
+                x.style.display = "none";
+                y.style.display = "none";
+            }
+        }
+
+        function manipulateDiv2() 
+        {
+            var x = document.getElementById("div2");
+            var y = document.getElementById("div1");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                y.style.display = "none";
+            } else {
+                x.style.display = "none";
+                y.style.display = "none";
+            }
+        }
+
+        function callSearch()
+        {
+            var amt = document.getElementById("value2").value;
+            window.location = "search.html?" + amt;
+        }
+
+        function callPatientSearch()
+        {
+            var state = document.getElementById("value1").value;
+            window.location = "patientsearch.html?" + state;
+        }
+
+        function callPatientProgram()
+        {
+            var prog = document.getElementById("value1").value;
+            window.location = "patientsearchprogram.html?" + prog;
+        }
+
+
+
+</script>
+
       <script src="plugins/jquery.js"></script>
       <script src="plugins/bootstrap.min.js"></script>
       <script src="plugins/bootstrap-select.min.js"></script>
@@ -295,13 +275,14 @@ if (document.getElementById('femaleRadioBtn').checked) {
       <!-- Google Map -->
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
       <script src="plugins/google-map/gmap.js"></script>
+      
       <script src="plugins/validate.js"></script>
       <script src="plugins/wow.js"></script>
-      
-      <!-- <script src="app1.js"></script> -->
       <script src="plugins/jquery-ui.js"></script>
       <script src="plugins/timePicker.js"></script>
       <script src="js/script.js"></script>
+      <script type="text/javascript" src="firebase.js"></script>
+      <script src="app.js"></script>
       </body>
       
       </html>

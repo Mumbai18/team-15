@@ -153,8 +153,8 @@ li {
   -webkit-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
-  width: 20px;
   
+
 }
 
 .btn-style-one:hover {
@@ -321,11 +321,14 @@ li {
 }
 
 .header-uper {
-  padding: 40px 0px;
+  padding: 5px 0px;
 }
 
+
 .header-uper .logo {
-  float: left;
+  float:right;
+  position: relative;
+  right:45%;
 }
 
 .header-uper .right-side {
@@ -471,6 +474,9 @@ li {
 .navbar .navbar-nav li a {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 17px;
+  
+  float:right;
+  position: relative;
   color: #fff;
   text-transform: uppercase;
   padding: 25px 20px;
@@ -601,6 +607,7 @@ li {
 .hero-slider .content.style .tag-text {
   font-size: 20px;
   font-weight: normal;
+  font-family: Montserrat;
 }
 
 .hero-slider .content.style .btn-main {
@@ -3470,7 +3477,7 @@ li {
     margin-bottom: 30px !important;
   }
   .header-uper .logo {
-    margin-bottom: 40px !important;
+    margin-bottom: 10px !important;
   }
   .header-uper .contact-info .item {
     text-align: left !important;
