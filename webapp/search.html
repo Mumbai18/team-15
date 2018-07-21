@@ -1,108 +1,300 @@
+<!DOCTYPE html>
 <html>
+
 <head>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="src/jquery.table2excel.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta charset="utf-8">
+  <title>V Care Foundation</title>
 
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="styler.css">
-<script src = "https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
-<script src = "https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
-<script type="text/javascript" src="firebase.js"></script>
-<!-- <script src="firebase.js"></script> -->
-<div class="table-responsive" id="donor-details">
-<h2>Donor Details</h2>
-<div style="float: left; width: 50%">
+  
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="plugins/slick/slick.css">
+  <link rel="stylesheet" href="plugins/slick/slick-theme.css">
+  <!-- FancyBox -->
+  <link rel="stylesheet" href="plugins/fancybox/jquery.fancybox.min.css">
+  
+  <!-- Stylesheets -->
+  <link href="css/style.css" rel="stylesheet">
+  
+  <!--Favicon-->
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
-<input type="button" onclick="tableToExcel('table_id', 'W3C Example Table')" value="Export to Excel">
-<table class="table fixed" id="table_id">
-	<thead>
-		<tr class="noExl">
-		<th>Name</th>
-		<th>Amount</th>
-		<th>Date of Donation</th>
-		</tr>
-		</thead>
-	<tbody id="table_body1"></tbody>
-</table>
+      
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="src/jquery.table2excel.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-</div>
-<div style="float: left; width: 50%">
-    <input type="button" onclick="tableToExcel('table_id', 'W3C Example Table')" value="Export to Excel">
-    <table class="table fixed" id="table_id">
-        <thead>
-            <tr class="noExl">
-            <th>Name</th>
-            <th>Amount</th>
-            <th>Date of Donation</th>
-            </tr>
-            </thead>
-        <tbody id="table_body2"></tbody>
-    </table>
-</div>  
-
-<script type="text/javascript">
-</script>
-<script type="text/javascript">
-var tableToExcel = (function() {
-  var uri = 'data:application/vnd.ms-excel;base64,'
-    , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
-    , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
-    , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
-  return function(table, name) {
-    if (!table.nodeType) table = document.getElementById(table)
-    var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
-    window.location.href = uri + base64(format(template, ctx))
-  }
-})()
-</script>
-</head>
-<body>
-<script>
-    var amountspeci = window.location.search;
-  if (amountspeci.substring(0, 1) == '?') {
-    amountspeci = amountspeci.substring(1);
-  }
-	db.collection("Donor").where("amount", ">=", amountspeci)
-    .onSnapshot(function(querySnapshot) { 
-    	var cities = [];
-        querySnapshot.forEach(function(doc) {
-            var name = doc.data().name;
-            var amount = doc.data().amount;
-            var dod = doc.data().dateofdonation;
-            $("#table_body1").append("<tr><td>"+name+"</td> <td>"+amount+"</td><td>"+dod+"</td><td></td></tr>");
-        });
-        
-        //document.write("Name of the Donors are:", cities.join(", "));
-    });
-    function showTableData() {
-        document.getElementById('info').innerHTML = "";
-        var myTab = document.getElementById('table_id');
-
-        // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
-        for (i = 1; i < myTab.rows.length; i++) {
-
-            // GET THE CELLS COLLECTION OF THE CURRENT ROW.
-            var objCells = myTab.rows.item(i).cells;
-
-            // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
-            for (var j = 0; j < objCells.length; j++) {
-                info.innerHTML = info.innerHTML + ' ' + objCells.item(j).innerHTML;
-            }
-            info.innerHTML = info.innerHTML + '<br />';     // ADD A BREAK (TAG).
-        }
-    }
-
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styler.css">
+    <script src = "https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
+    <script type="text/javascript" src="firebase.js"></script>
+    <!-- <script src="firebase.js"></script> -->
+    <script type="text/javascript">
+    </script>
+    <script type="text/javascript">
+    var tableToExcel = (function() {
+      var uri = 'data:application/vnd.ms-excel;base64,'
+        , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+        , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+        , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+      return function(table, name) {
+        if (!table.nodeType) table = document.getElementById(table)
+        var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+        window.location.href = uri + base64(format(template, ctx))
+      }
+    })()
+    </script>
     
-</script>
-</html>
-</script>
+
+
+</head>
+
+
+<body>
+  <div class="page-wrapper">
+    <!-- Preloader -->
+    <!-- <div class="preloader"></div> -->
+    <!-- Preloader -->
+
+  <!--Header Upper-->
+<section class="header-uper">
+      <div class="container clearfix">
+            <div class="logo">
+                  <figure>
+                        <a href="index.html">
+                              <img src="images/logo.jpeg" alt="" width="130">
+                        </a>
+                  </figure>
+            </div>
+      </div>
+</section>
+<!--Header Upper-->
+
+
+<!--Main Header-->
+<nav class="navbar navbar-default">
+      <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                        aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                  </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                        <li class="active">
+                              <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                              <a href="about.html">About</a>
+                        </li>
+                        <li>
+                              <a href="blog.html">Blog</a>
+                        </li>
+                        <li>
+                              <a href="contact.html">Contact</a>
+                        </li>
+                        <li>
+                              <a href="signup.html">Sign Up</a>
+                        </li>
+                  </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+</nav>
+<!--End Main Header -->
+
+<!-- Search Section -->
+<section class="blog-section section style-three pb-0" style="padding-top: 5px">
+    <div class="container">
+        <div class="row">
+            <div >
+                <div class="table-responsive" id="donor-details">
+                    <h2 class="text-center">Donor Details</h2>
+                    <div style="float: left; width: 90%;">
+                        <table class="table fixed" id="table_id">
+                            <thead>
+                                <tr class="noExl">
+                                <th>Name</th>
+                                <th>Amount</th>
+                                <th>Date of Donation</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table_body1"></tbody>
+                        </table>                    
+                    </div>   
+                    <div style="padding-bottom: 20px">
+                        <input type="button" onclick="tableToExcel('table_id', 'W3C Example Table')" value="Export to Excel" class="btn-style-one">
+                    </div>    
+                </div>
+            </div>                    
+        </div>
+    </div>
+</section>
+<!-- End Contact Section -->
+
+<!--footer-main-->
+<footer class="footer-main">
+        <div class="footer-top">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="about-widget">
+                  <div class="footer-logo">
+                    <figure>
+                      <a href="index.html">
+                        <img src="images/logo.jpeg" alt="">
+                      </a>
+                    </figure>
+                  </div>
+      
+                  <ul class="list-inline social-icons">
+                              <li><a href="www.facebook.com/vcarefoundationindia"><i class="fa fa-facebook"></i></a></li>
+                              <li><a href="@vcare24"><i class="fa fa-twitter"></i></a></li>
+                              <li><a href="www.linkedin.com/company/v-care-foundation/"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="about-widget">
+                        <ul class="location-link">
+                          <li class="item">
+                            <i class="fa fa-map-marker"></i>
+                            <p>A102, Om Residency, J W Rd, Nr. Tata Memorial Hosp, Opp Bhoiwada Court, Parel(E)</p>
+                          </li>
+                          <li class="item">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            <a href="#">
+                              <p>admin@vcarecancer.org</p>
+                            </a>
+                          </li>
+                          <li class="item">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <p>1800-209-1101</p>
+                          </li>
+                        </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="container clearfix">
+            <ul class="footer-bottom-link">
+              <li>
+                <a href="index.html">Home</a>
+              </li>
+              <li>
+                <a href="about.html">About</a>
+              </li>
+              <li>
+                <a href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+      <!--End footer-main-->
+      
+      </div>
+      <!--End pagewrapper-->
+      
+      
+      <!--Scroll to top-->
+      <div class="scroll-to-top scroll-to-target" data-target=".header-top">
+        <span class="icon fa fa-angle-up"></span>
+      </div>
+      
+
+      <!--Insertion of table-->
+      <script>
+            var amountspeci = window.location.search;
+          if (amountspeci.substring(0, 1) == '?') {
+            amountspeci = amountspeci.substring(1);
+          }
+          db.collection("Donor").where("amount", ">=", amountspeci)
+    .onSnapshot(function(snapshot) {
+        snapshot.docChanges().forEach(function(change) {
+            if (change.type === "added") {
+            var name = change.doc.data().name;
+            var amount = change.doc.data().amount;
+             var dateofdonation = change.doc.data().dateofdonation;
+            $("#table_body1").append("<tr><td>"+name+"</td> <td>"+amount+"</td><td>"+dateofdonation+"</td><td></td></tr>");
+            }
+            if (change.type === "modified") {
+            var name = change.doc.data().name;
+             var amount = change.doc.data().amount;
+             var dateofdonation = change.doc.data().dateofdonation;
+              $("#table_body1").append("<tr><td>"+name+"</td> <td>"+amount+"</td><td>"+dateofdonation+"</td><td></td></tr>");
+            }
+            if (change.type === "removed") {
+               var name = change.doc.data().name;
+            var amount = change.doc.data().amount;
+            var dateofdonation = change.doc.data().dateofdonation;
+             $("#table_body1").append("<tr><td>"+name+"</td> <td>"+amount+"</td><td>"+dateofdonation+"</td><td></td></tr>");
+            }
+        });
+    });
+            function showTableData() {
+                document.getElementById('info').innerHTML = "";
+                var myTab = document.getElementById('table_id');
+        
+                // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
+                for (i = 1; i < myTab.rows.length; i++) {
+        
+                    // GET THE CELLS COLLECTION OF THE CURRENT ROW.
+                    var objCells = myTab.rows.item(i).cells;
+        
+                    // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
+                    for (var j = 0; j < objCells.length; j++) {
+                        info.innerHTML = info.innerHTML + ' ' + objCells.item(j).innerHTML;
+                    }
+                    info.innerHTML = info.innerHTML + '<br />';     // ADD A BREAK (TAG).
+                }
+            }  
+        </script>
+        
+
+
+      <script src="plugins/jquery.js"></script>
+      <script src="plugins/bootstrap.min.js"></script>
+      <script src="plugins/bootstrap-select.min.js"></script>
+      <!-- Slick Slider -->
+      <script src="plugins/slick/slick.min.js"></script>
+      <!-- FancyBox -->
+      <script src="plugins/fancybox/jquery.fancybox.min.js"></script>
+      <!-- Google Map -->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+      <script src="plugins/google-map/gmap.js"></script>
+      
+      <script src="plugins/validate.js"></script>
+      <script src="plugins/wow.js"></script>
+      <script src="plugins/jquery-ui.js"></script>
+      <script src="plugins/timePicker.js"></script>
+      <script src="js/script.js"></script>
+      <script type="text/javascript" src="firebase.js"></script>
+      <script src="app.js"></script>
+      
+      </body>
+      </html>
+      
