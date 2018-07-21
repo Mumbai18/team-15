@@ -1,0 +1,87 @@
+<html>
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="src/jquery.table2excel.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="styler.css">
+<script src = "https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+<script src = "https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
+<script type="text/javascript" src="firebase.js"></script>
+<!-- <script src="firebase.js"></script> -->
+<div class="table-responsive" id="donor-details">
+<h2><strong><center>Patient Details</h2>
+<input type="button" onclick="tableToExcel('table_id', 'W3C Example Table')" value="Export to Excel">
+<table class="table fixed" id="table_id">
+	<thead>
+		<tr class="noExl">
+		<th>Name</th>
+		<th>State</th>
+		<th>Program</th>
+		</tr>
+		</thead>
+	<tbody id="table_body1"></tbody>
+</table></strong>
+<script type="text/javascript">
+</script>
+<script type="text/javascript">
+var tableToExcel = (function() {
+  var uri = 'data:application/vnd.ms-excel;base64,'
+    , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+    , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+    , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+  return function(table, name) {
+    if (!table.nodeType) table = document.getElementById(table)
+    var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+    window.location.href = uri + base64(format(template, ctx))
+  }
+})()
+</script>
+</head>
+<body>
+<script>
+	var state = "GUJARAT"
+    state = state.toLowerCase();
+    state = $.trim(state);
+	db.collection("Patient").where("state", "==", state)
+    .onSnapshot(function(querySnapshot) { 
+    	var cities = [];
+        querySnapshot.forEach(function(doc) {
+            var name = doc.data().name;
+            var state = doc.data().state;
+            var program = doc.data().program;
+            $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
+        });
+        
+        //document.write("Name of the Donors are:", cities.join(", "));
+    });
+    function showTableData() {
+        document.getElementById('info').innerHTML = "";
+        var myTab = document.getElementById('table_id');
+
+        // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
+        for (i = 1; i < myTab.rows.length; i++) {
+
+            // GET THE CELLS COLLECTION OF THE CURRENT ROW.
+            var objCells = myTab.rows.item(i).cells;
+
+            // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
+            for (var j = 0; j < objCells.length; j++) {
+                info.innerHTML = info.innerHTML + ' ' + objCells.item(j).innerHTML;
+            }
+            info.innerHTML = info.innerHTML + '<br />';     // ADD A BREAK (TAG).
+        }
+    }
+</script>
+</html>
+</script>
