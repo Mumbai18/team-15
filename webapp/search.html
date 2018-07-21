@@ -20,7 +20,9 @@
 <script type="text/javascript" src="firebase.js"></script>
 <!-- <script src="firebase.js"></script> -->
 <div class="table-responsive" id="donor-details">
-<h2><strong><center>Donor Details</h2>
+<h2>Donor Details</h2>
+<div style="float: left; width: 50%">
+
 <input type="button" onclick="tableToExcel('table_id', 'W3C Example Table')" value="Export to Excel">
 <table class="table fixed" id="table_id">
 	<thead>
@@ -31,7 +33,23 @@
 		</tr>
 		</thead>
 	<tbody id="table_body1"></tbody>
-</table></strong>
+</table>
+
+</div>
+<div style="float: left; width: 50%">
+    <input type="button" onclick="tableToExcel('table_id', 'W3C Example Table')" value="Export to Excel">
+    <table class="table fixed" id="table_id">
+        <thead>
+            <tr class="noExl">
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Date of Donation</th>
+            </tr>
+            </thead>
+        <tbody id="table_body2"></tbody>
+    </table>
+</div>  
+
 <script type="text/javascript">
 </script>
 <script type="text/javascript">
@@ -50,7 +68,10 @@ var tableToExcel = (function() {
 </head>
 <body>
 <script>
-	var amountspeci = "2000"
+    var amountspeci = window.location.search;
+  if (amountspeci.substring(0, 1) == '?') {
+    amountspeci = amountspeci.substring(1);
+  }
 	db.collection("Donor").where("amount", ">=", amountspeci)
     .onSnapshot(function(querySnapshot) { 
     	var cities = [];
@@ -80,6 +101,8 @@ var tableToExcel = (function() {
             info.innerHTML = info.innerHTML + '<br />';     // ADD A BREAK (TAG).
         }
     }
+
+    
 </script>
 </html>
 </script>
