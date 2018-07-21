@@ -23,44 +23,6 @@
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
-      
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="src/jquery.table2excel.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styler.css">
-    <script src = "https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
-    <script src = "https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
-    <script type="text/javascript" src="firebase.js"></script>
-    <!-- <script src="firebase.js"></script> -->
-    <script type="text/javascript">
-    </script>
-    <script type="text/javascript">
-    var tableToExcel = (function() {
-      var uri = 'data:application/vnd.ms-excel;base64,'
-        , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
-        , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
-        , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
-      return function(table, name) {
-        if (!table.nodeType) table = document.getElementById(table)
-        var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
-        window.location.href = uri + base64(format(template, ctx))
-      }
-    })()
-    </script>
-    
-
-
 </head>
 
 
@@ -124,31 +86,59 @@
 </nav>
 <!--End Main Header -->
 
-<!-- Search Section -->
+<!-- Contact Section -->
 <section class="blog-section section style-three pb-0" style="padding-top: 5px">
     <div class="container">
         <div class="row">
             <div >
-                <div class="table-responsive" id="donor-details">
-                    <h2 class="text-center">Donor Details</h2>
-                    <div style="float: left; width: 90%;">
-                        <table class="table fixed" id="table_id">
-                            <thead>
-                                <tr class="noExl">
-                                <th>Name</th>
-                                <th>Amount</th>
-                                <th>Date of Donation</th>
-                                </tr>
-                            </thead>
-                            <tbody id="table_body1"></tbody>
-                        </table>                    
-                    </div>   
-                    <div style="padding-bottom: 20px">
-                        <input type="button" onclick="tableToExcel('table_id', 'W3C Example Table')" value="Export to Excel" class="btn-style-one">
-                    </div>    
+                <div class="style-two">
+                    <div class="section-title text-center">
+                        <h3><span>Search</span></h3>
+                    </div>
+                    <div class="row">
+                        <div>                          
+                        </div>
+                                <span></span>
+                    </div>
                 </div>
-            </div>                    
-        </div>
+                
+                <div style="padding-bottom: 75px">
+                    <div style="padding-bottom: 20px;" >
+                        <label>Do you want to search for Patient?</label>
+                            <button id="patient" class="btn-style-one" onClick="manipulateDiv1()" >Click here!</button>
+                        </div> 
+                    <div id="div1" style="display:none">
+
+                        <div  style="padding-bottom: 20px; float:left; padding-left: 20px;" >
+                            <input type="text" id="value1">
+                        </div>
+                        <div  style="padding-bottom: 20px; float:left; padding-left: 20px; padding-right: 20px" >
+                            <button id="state" class="btn-style-one" onClick="callPatientSearch()">State</button>
+                        </div>
+                        <div  style="padding-bottom: 10px; padding-left: 20px" >                            
+                            <button id="program" class="btn-style-one" onClick="callPatientProgram()">Program</button>
+                        </div>
+                    </div>
+                </div>
+  
+                <div style="padding-bottom: 50px">
+                    <div  style="padding-bottom: 20px;" >
+                        <label>Do you want to search for Donor?</label>
+                            <button id="donor" class="btn-style-one" onClick="manipulateDiv2()">Click Here!</button>
+                        </div> 
+
+                    <div id="div2" style="display: none">
+
+                        <div  style="padding-bottom: 20px; float:left;" >
+                            <input type="number" id="value2">
+                        </div>
+                        <div class="text-center col-md-4 col-sm-6 col-xs-12" style="padding-bottom: 20px; float:left" >    
+                            <button id="amount" class="btn-style-one" onClick="callSearch()">Amount</button>
+                            </div>
+                    </div> 
+                </div> 
+            </div>
+        </div>                    
     </div>
 </section>
 <!-- End Contact Section -->
@@ -226,55 +216,54 @@
       </div>
       
 
-      <!--Insertion of table-->
       <script>
-            var amountspeci = window.location.search;
-          if (amountspeci.substring(0, 1) == '?') {
-            amountspeci = amountspeci.substring(1);
-          }
-          db.collection("Donor").where("amount", ">=", amountspeci)
-    .onSnapshot(function(snapshot) {
-        snapshot.docChanges().forEach(function(change) {
-            if (change.type === "added") {
-            var name = change.doc.data().name;
-            var amount = change.doc.data().amount;
-             var dateofdonation = change.doc.data().dateofdonation;
-            $("#table_body1").append("<tr><td>"+name+"</td> <td>"+amount+"</td><td>"+dateofdonation+"</td><td></td></tr>");
+        function manipulateDiv1() 
+        {
+            var x = document.getElementById("div1");
+            var y = document.getElementById("div2");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                y.style.display = "none";
+            } else {
+                x.style.display = "none";
+                y.style.display = "none";
             }
-            if (change.type === "modified") {
-            var name = change.doc.data().name;
-             var amount = change.doc.data().amount;
-             var dateofdonation = change.doc.data().dateofdonation;
-              $("#table_body1").append("<tr><td>"+name+"</td> <td>"+amount+"</td><td>"+dateofdonation+"</td><td></td></tr>");
-            }
-            if (change.type === "removed") {
-               var name = change.doc.data().name;
-            var amount = change.doc.data().amount;
-            var dateofdonation = change.doc.data().dateofdonation;
-             $("#table_body1").append("<tr><td>"+name+"</td> <td>"+amount+"</td><td>"+dateofdonation+"</td><td></td></tr>");
-            }
-        });
-    });
-            function showTableData() {
-                document.getElementById('info').innerHTML = "";
-                var myTab = document.getElementById('table_id');
-        
-                // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
-                for (i = 1; i < myTab.rows.length; i++) {
-        
-                    // GET THE CELLS COLLECTION OF THE CURRENT ROW.
-                    var objCells = myTab.rows.item(i).cells;
-        
-                    // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
-                    for (var j = 0; j < objCells.length; j++) {
-                        info.innerHTML = info.innerHTML + ' ' + objCells.item(j).innerHTML;
-                    }
-                    info.innerHTML = info.innerHTML + '<br />';     // ADD A BREAK (TAG).
-                }
-            }  
-        </script>
-        
+        }
 
+        function manipulateDiv2() 
+        {
+            var x = document.getElementById("div2");
+            var y = document.getElementById("div1");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                y.style.display = "none";
+            } else {
+                x.style.display = "none";
+                y.style.display = "none";
+            }
+        }
+
+        function callSearch()
+        {
+            var amt = document.getElementById("value2").value;
+            window.location = "search.html?" + amt;
+        }
+
+        function callPatientSearch()
+        {
+            var state = document.getElementById("value1").value;
+            window.location = "patientsearch.html?" + state;
+        }
+
+        function callPatientProgram()
+        {
+            var prog = document.getElementById("value1").value;
+            window.location = "patientsearchprogram.html?" + prog;
+        }
+
+
+
+</script>
 
       <script src="plugins/jquery.js"></script>
       <script src="plugins/bootstrap.min.js"></script>
@@ -294,7 +283,7 @@
       <script src="js/script.js"></script>
       <script type="text/javascript" src="firebase.js"></script>
       <script src="app.js"></script>
-      
       </body>
+      
       </html>
       
