@@ -15,8 +15,7 @@
   const btnLogin = document.getElementById('btnLogin');
   const btnSignUp = document.getElementById('btnSignUp');
   /*const btnLogout = document.getElementById('btnLogout');*/
-
-  btnLogin.addEventListener('click', e=>{
+  btnLogin.addEventListener('click',e=>{
   const email = txtEmail.value;
   const pass = txtPassword.value;
   const auth = firebase.auth();
