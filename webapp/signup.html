@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>V Care Cancer Foundation</title>
+  <title>V Care Foundation</title>
 
   
   <!-- mobile responsive meta -->
@@ -22,6 +22,18 @@
   <!--Favicon-->
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+<script>
+  function callVol()
+  {
+    window.location = "signupVolunteer.html";
+  }
+  function callStaff()
+  {
+    window.location = "signupStaff.html";
+  }
+  </script>
+
 </head>
 <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
 <body>
@@ -41,9 +53,6 @@
                   </figure>
             </div>
             <div>
-            <div>
-                  <i><b>Coping with Cancer - from chaos to control</b></i>
-            </div>
       </div>
 </section>
 <!--Header Upper-->
@@ -95,25 +104,17 @@
             <div  class="col-md-6 col-sm-12 col-xs-12" >
                 <div class="contact-area style-two">
                     <div class="section-title">
-                        <h3><span>Sign Up</span></h3>
+                        <h3><span>You want to Sign Up for Volunteer or Staff?</span></h3>
                     </div>
                     <div class="row">
-                        <div >
-                            <div class="form-group">
-                                <input type="email" name="Email" placeholder="Email" required="" id="txtEmail">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" name="Password" placeholder="Password" required="" id="txtPassword">
-                            </div>                     
-                        </div>
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group text-center">
-                                <button type="submit" class="btn-style-one" id="btnSignUp">Sign Up</button>
+                                <button type="submit" class="btn-style-one" id="btnLogin1" onClick="callVol()">Volunteer</button>
                             </div>                            
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group text-center">
-                                <button type="submit" class="btn-style-one" id="btnLogin">Login</button>
+                                <button type="submit" class="btn-style-one" id="btnLogin2" onClick="callStaff()">Staff</button>
                             </div>                            
                         </div>
                     </div>
