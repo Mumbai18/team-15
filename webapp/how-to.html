@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>V Care Cancer Foundation</title>
+  <title>Medic | Medical HTML Template</title>
 
   
   <!-- mobile responsive meta -->
@@ -22,13 +22,18 @@
   <!--Favicon-->
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+  <script>
+  window.onload = function() {
+  alert("calling");
+};
+  </script>
+
+
 </head>
-<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+
+
 <body>
-  <div class="page-wrapper">
-    <!-- Preloader -->
-    <!-- <div class="preloader"></div> -->
-    <!-- Preloader -->
 <!--Header Upper-->
 <section class="header-uper">
       <div class="container">
@@ -65,10 +70,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                        <li>
+                        <li >
                               <a href="index.html">Home</a>
                         </li>
-                        <li>
+                        <li class="active">
                               <a href="how-to.html">How to</a>
                         </li>
                         
@@ -76,53 +81,91 @@
                               <a href="videos.html">Programs</a>
                         </li>
                         <li>
-                        <li class = "active">
+                        <li class = ".navbar .navbar-nav li a ">
                             <a href = "signup.html">Login</a>
                         </li>
                   </ul>
             </div>
-            
             <!-- /.navbar-collapse -->
       </div>
       <!-- /.container-fluid -->
 </nav>
 <!--End Main Header -->
-
-<!-- Login Section -->
-<section class="blog-section section style-three pb-0" >
+<!--FAQ-->
+<section class="appoinment-section section">
     <div class="container">
-        <div class="row" >
-            <div  class="col-md-6 col-sm-12 col-xs-12" >
-                <div class="contact-area style-two">
-                    <div class="section-title">
-                        <h3><span>Sign Up</span></h3>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="accordion-section">
+    <div class="section-title">
+        <h3>How To</h3>
+    </div>
+    <div class="accordion-holder">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            How can I retrieve data from database?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        Login as per your role.
+                        If you are a <a href="#">Staff Member</a> or a <a href="#">Volunteer</a> you can click the login button on the navbar.
+                        Put your credentials & login.
+                        You will reach to a screen where you can see your dashboard. From here you can Search using the search tab in the navigation bar above.
                     </div>
-                    <div class="row">
-                        <div >
-                            <div class="form-group">
-                                <input type="email" name="Email" placeholder="Email" required="" id="txtEmail">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" name="Password" placeholder="Password" required="" id="txtPassword">
-                            </div>                     
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group text-center">
-                                <button type="submit" class="btn-style-one" id="btnSignUp">Sign Up</button>
-                            </div>                            
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group text-center">
-                                <button type="submit" class="btn-style-one" id="btnLogin">Login</button>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>                      
+                </div>
             </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Question?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                        non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                        helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                        vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+                        heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Question?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                        non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                        helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                        vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+                        heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+            
         </div>                    
     </div>
 </section>
-<!-- End Login Section -->
+<!--FAQ end-->
 
 <!--footer-main-->
 <footer class="footer-main">
@@ -142,7 +185,7 @@
         </div>
         
         <div class="col-md-4 col-sm-6 col-xs-12">
-            <ul class="location-link">
+            <ul class="location-link">/
               <li class="item">
                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
                 <a href="admin@vcarecancer.org">
@@ -187,14 +230,13 @@
 <!-- Google Map -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
 <script src="plugins/google-map/gmap.js"></script>
-<script type="text/javascript" src="firebase.js"></script>
-<script src="app.js"></script>
+
 <script src="plugins/validate.js"></script>
 <script src="plugins/wow.js"></script>
 <script src="plugins/jquery-ui.js"></script>
 <script src="plugins/timePicker.js"></script>
 <script src="js/script.js"></script>
-
 </body>
 
 </html>
+
