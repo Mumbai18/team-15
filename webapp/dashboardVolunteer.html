@@ -24,6 +24,58 @@
   <!--Favicon-->
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+		</script>
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+		<script>
+			$().ready(function(){
+				$(#register_form).validate(function(){
+					rules : {
+						name  : "required",
+            phone : {
+              required : true
+            }
+            datepicker : "required",
+            type_cancer : "required",
+            gender : "required",
+            stage_cancer : "required",
+            city : "required",
+            state : "required",
+            income : "required"
+					},
+					messages : {
+						name : {
+							required : "Please enter valid name",
+            },
+            phone : {
+              required : "Please enter valid phone number",
+            },
+            datepicker : {
+              required : "Please enter your data",
+            },
+            type_cancer : {
+              required : "Please enter your data",
+            },
+            gender : {
+              required : "Please enter your data",
+            },
+            stage_cancer : {
+              required : "Please enter your data",
+            },
+            city : {
+              required : "Please enter your data",
+            },
+            state : {
+              required : "Please enter your data",
+            },
+            income : {
+              required : "Please enter your data",
+            },
+					}
+				});
+		</script>
 <script src = "https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
 <script src = "https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
@@ -81,13 +133,18 @@ if (document.getElementById('femaleRadioBtn').checked) {
 
   <!--Header Upper-->
 <section class="header-uper">
-      <div class="container clearfix">
-            <div class="logo">
-                  <figure>
-                        <a href="index.html">
-                              <img src="images/logo.jpeg" alt="" width="130">
-                        </a>
-                  </figure>
+      <div class="container">
+            <div class="logo">    
+                <a href="index.html">
+                    <img src="images/logo.jpeg" alt="" width="110"> 
+                </a> 
+            </div>
+            <div class="right-side">
+                  <ul class="contact-info">
+                    <li class="item">
+
+                    </li>
+                  </ul>
             </div>
       </div>
 </section>
@@ -110,11 +167,18 @@ if (document.getElementById('femaleRadioBtn').checked) {
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
+                        
                         <li class="active">
                               <a href="index.html">Home</a>
                         </li>
                         <li>
+                              <a href="how-to.html">How to</a>
+                        </li>
+                        <li>
                               <a href="about.html">About</a>
+                        </li>
+                        <li>
+                              <a href="videos.html">Programs</a>
                         </li>
                         <li>
                               <a href="blog.html">Blog</a>
@@ -123,7 +187,7 @@ if (document.getElementById('femaleRadioBtn').checked) {
                               <a href="contact.html">Contact</a>
                         </li>
                         <li>
-                              <a href="logout.html">Sign Up</a>
+                            <a href = "signup.html">Login</a>
                         </li>
                   </ul>
             </div>
@@ -132,6 +196,7 @@ if (document.getElementById('femaleRadioBtn').checked) {
       <!-- /.container-fluid -->
 </nav>
 <!--End Main Header -->
+
 <!-- <script src="firebase.js"></script> -->
 <!-- Contact Section -->
 <section class="blog-section section style-three pb-0" style="padding-top: 5px">
@@ -142,7 +207,7 @@ if (document.getElementById('femaleRadioBtn').checked) {
                     <div class="section-title text-center">
                         <h3><span>Register Patient</span></h3>
                     </div>
-                    <form name="register_form" class="default-form contact-form">
+                    <form name="register_form" id ="register_form" class="default-form contact-form">
                         <div class="row">
                             <div >
                                 <div class="form-group" style="padding-top: 0px">
@@ -155,12 +220,12 @@ if (document.getElementById('femaleRadioBtn').checked) {
                                     <input type="text" name="Date of Birth" placeholder="Date of Birth" required="" id="datepicker">
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" id="gender">
                                     <label class="radio-inline"><input type="radio" name="optradio" id="maleRadioBtn">Male</label>
                                     <label class="radio-inline"><input type="radio" name="optradio" id="femaleRadioBtn">Female</label>  
                                 </div>  
                                 <label>Type of Cancer: </label> 
-                                <div class="form-group">
+                                <div class="form-group" id="type_cancer">
                                     <select name="typeOfCancer" id="typeOfCancer">
                                         <option>Blood Cancer</option>
                                         <option>Lung Cancer</option>
@@ -173,7 +238,7 @@ if (document.getElementById('femaleRadioBtn').checked) {
                                     </select>
                                 </div>  
                                 <label>Cancer Stage: </label> 
-                                <div class="form-group">
+                                <div class="form-group" id="stage_cancer">
                                     <select name="stageOfCancer" id = "stageOfCancer">
                                         <option>I</option>
                                         <option>II</option>
@@ -216,66 +281,47 @@ if (document.getElementById('femaleRadioBtn').checked) {
 
 <!--footer-main-->
 <footer class="footer-main">
-        <div class="footer-top">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="about-widget">
-                  <div class="footer-logo">
-                    <figure>
-                      <a href="index.html">
-                        <img src="images/logo.jpeg" alt="">
-                      </a>
-                    </figure>
-                  </div>
-      
-                  <ul class="list-inline social-icons">
-                              <li><a href="www.facebook.com/vcarefoundationindia"><i class="fa fa-facebook"></i></a></li>
-                              <li><a href="@vcare24"><i class="fa fa-twitter"></i></a></li>
-                              <li><a href="www.linkedin.com/company/v-care-foundation/"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                </div>
-              </div>
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="about-widget">
-                        <ul class="location-link">
-                          <li class="item">
-                            <i class="fa fa-map-marker"></i>
-                            <p>A102, Om Residency, J W Rd, Nr. Tata Memorial Hosp, Opp Bhoiwada Court, Parel(E)</p>
-                          </li>
-                          <li class="item">
-                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                            <a href="#">
-                              <p>admin@vcarecancer.org</p>
-                            </a>
-                          </li>
-                          <li class="item">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                            <p>1800-209-1101</p>
-                          </li>
-                        </ul>
-                </div>
-              </div>
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="about-widget">
+            <div class="footer-logo">
+              <figure>
+                <a href="index.html">
+                  <img src="images/logo.jpeg" alt="">
+                </a>
+              </figure>
             </div>
           </div>
         </div>
-        <div class="footer-bottom">
-          <div class="container clearfix">
-            <ul class="footer-bottom-link">
-              <li>
-                <a href="index.html">Home</a>
+        
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="location-link">
+              <li class="item">
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                <a href="admin@vcarecancer.org">
+                  <p>admin@vcarecancer.org</p>
+                </a>
               </li>
-              <li>
-                <a href="about.html">About</a>
-              </li>
-              <li>
-                <a href="contact.html">Contact</a>
+              <li class="item">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <p>+91-9821949401</p>
               </li>
             </ul>
-          </div>
+            <ul class="list-inline social-icons">
+              <li><a href="www.facebook.com/vcarefoundationindia"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="@vcare24"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="www.linkedin.com/company/v-care-foundation/"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+            </ul>
         </div>
-      </footer>
-      <!--End footer-main-->
+      </div>
+    </div>
+  </div>
+  
+</footer>
+<!--End footer-main-->
       
       </div>
       <!--End pagewrapper-->
