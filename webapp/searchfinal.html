@@ -49,34 +49,14 @@ var tableToExcel = (function() {
 </script>
 </head>
 <body>
-
-
 <script>
-	var program = window.location.search;
-  if (program.substring(0, 1) == '?') {
-    program = program.substring(1);
+    var state = window.location.search;
+  if (state.substring(0, 1) == '?') {
+    state = state.substring(1);
   }
-    program.toLowerCase();
-    var program = $.trim(program);
-    if(program === "")
-    {
-
-	    db.collection("patients")
-        .onSnapshot(function(querySnapshot) { 
-            var cities = [];
-            querySnapshot.forEach(function(doc) {
-                var name = doc.data().name;
-                var state = doc.data().state;
-                var program = doc.data().program;
-                $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
-            });
-            
-            //document.write("Name of the Donors are:", cities.join(", "));
-        });
-    }
-    else
-    {
-        db.collection("patients").where("program", "==", program)
+    state = state.toLowerCase();
+    state = $.trim(state);
+db.collection("patients").where("state", "==", state)
     .onSnapshot(function(snapshot) {
         snapshot.docChanges().forEach(function(change) {
             if (change.type === "added") {
@@ -99,7 +79,18 @@ var tableToExcel = (function() {
             }
         });
     });
-}
+	// db.collection("Patient").where("state", "==", state)
+ //    .onSnapshot(function(querySnapshot) { 
+ //    	var cities = [];
+ //        querySnapshot.forEach(function(doc) {
+ //            var name = doc.data().name;
+ //            var state = doc.data().state;
+ //            var program = doc.data().program;
+ //            $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
+ //        });
+ //        });
+ //        //document.write("Name of the Donors are:", cities.join(", "));
+ //    });
     function showTableData() {
         document.getElementById('info').innerHTML = "";
         var myTab = document.getElementById('table_id');
@@ -118,7 +109,5 @@ var tableToExcel = (function() {
         }
     }
 </script>
-
-
 </html>
 </script>
