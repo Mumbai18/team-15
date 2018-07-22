@@ -56,7 +56,9 @@ var tableToExcel = (function() {
   }
     state = state.toLowerCase();
     state = $.trim(state);
-db.collection("patients").where("state", "==", state)
+    if(program === "")
+    {
+db.collection("patients")
     .onSnapshot(function(snapshot) {
         snapshot.docChanges().forEach(function(change) {
             if (change.type === "added") {
@@ -79,6 +81,33 @@ db.collection("patients").where("state", "==", state)
             }
         });
     });
+  }
+  else
+  {
+    db.collection("patients").where("state", "==", state)
+    .onSnapshot(function(snapshot) {
+        snapshot.docChanges().forEach(function(change) {
+            if (change.type === "added") {
+            var name = change.doc.data().name;
+            var state = change.doc.data().state;
+             var program = change.doc.data().program;
+            $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
+            }
+            if (change.type === "modified") {
+            var name = change.doc.data().name;
+             var state = change.doc.data().state;
+             var program = change.doc.data().program;
+              $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
+            }
+            if (change.type === "removed") {
+               var name = change.doc.data().name;
+            var state = change.doc.data().state;
+            var program = change.doc.data().program;
+             $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
+            }
+        });
+    });
+  }
 	// db.collection("Patient").where("state", "==", state)
  //    .onSnapshot(function(querySnapshot) { 
  //    	var cities = [];
