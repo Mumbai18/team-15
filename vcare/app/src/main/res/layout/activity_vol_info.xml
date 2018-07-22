@@ -8,7 +8,7 @@
 
     <EditText
         android:id="@+id/nameVol"
-        android:layout_width="wrap_content"
+        android:layout_width="286dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -16,16 +16,16 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="120dp"
         android:ems="10"
-        android:hint="name"
+        android:hint="Enter your name!"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.426"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/locationVol"
-        android:layout_width="wrap_content"
+        android:layout_width="289dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -33,15 +33,33 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="location"
+        android:hint="Enter your location!"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameVol" />
 
     <EditText
         android:id="@+id/hospitalVol"
-        android:layout_width="wrap_content"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Enter hospital's name!"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.416"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationVol" />
+
+    <EditText
+        android:id="@+id/programVol"
+        android:layout_width="289dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -49,26 +67,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="hospital"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locationVol" />
-
-    <EditText
-        android:id="@+id/programVol"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
         android:hint="Enter Program"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.443"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hospitalVol" />
 
@@ -80,15 +82,17 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="68dp"
         android:text="Submit"
+        android:textSize="20dp"
+        android:background="#9195f4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/programVol" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="302dp"
+        android:layout_width="360dp"
         android:layout_height="39dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="80dp"
@@ -96,12 +100,14 @@
         android:layout_marginRight="80dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Enter Volunteer's details here!"
-        android:textSize="20dp"
+        android:text="    Enter Volunteer's details here!"
+        android:textColor="#111"
+
+        android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/nameVol"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.575" />
+        app:layout_constraintVertical_bias="0.606" />
 </android.support.constraint.ConstraintLayout>

@@ -187,8 +187,11 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.item1:
 
+
             case R.id.item2:
                 FirebaseAuth.getInstance().signOut();
+                Intent i = new Intent(MainActivity.this, FirstPage.class);
+                startActivity(i);
 
             default:
                 return super.onOptionsItemSelected(item);
