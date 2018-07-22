@@ -79,7 +79,7 @@ btnSignUp.addEventListener('click', e=>{
 
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser){
-    window.location='home.php';
+    window.location='dashboardVolunteer.html';
     //console.log(firebaseUser);
     /*btnLogout.classList.remove('hide');*/
   } else {
