@@ -21,7 +21,9 @@ public class FirstPage extends AppCompatActivity {
         LoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent gotToMainActivity = new Intent(FirstPage.this,MainActivity.class);
+                startActivity(gotToMainActivity);
+                finish();
             }
         });
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
