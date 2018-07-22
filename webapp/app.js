@@ -1,3 +1,4 @@
+
   (function(){
   // Initialize Firebase
   //document.writeln("<script type='text/javascript' src='firebase.js'></script>");
