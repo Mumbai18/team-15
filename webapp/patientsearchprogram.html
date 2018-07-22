@@ -61,7 +61,7 @@ var tableToExcel = (function() {
     if(program === "")
     {
 
-	    db.collection("Patient")
+	    db.collection("patients")
         .onSnapshot(function(querySnapshot) { 
             var cities = [];
             querySnapshot.forEach(function(doc) {
@@ -76,19 +76,30 @@ var tableToExcel = (function() {
     }
     else
     {
-        db.collection("Patient").where("program", "==", program)
-        .onSnapshot(function(querySnapshot) { 
-            var cities = [];
-            querySnapshot.forEach(function(doc) {
-                var name = doc.data().name;
-                var state = doc.data().state;
-                var program = doc.data().program;
-                $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
-            });
-            
-            //document.write("Name of the Donors are:", cities.join(", "));
+        db.collection("patients").where("program", "==", program)
+    .onSnapshot(function(snapshot) {
+        snapshot.docChanges().forEach(function(change) {
+            if (change.type === "added") {
+            var name = change.doc.data().name;
+            var state = change.doc.data().state;
+             var program = change.doc.data().program;
+            $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
+            }
+            if (change.type === "modified") {
+            var name = change.doc.data().name;
+             var state = change.doc.data().state;
+             var program = change.doc.data().program;
+              $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
+            }
+            if (change.type === "removed") {
+               var name = change.doc.data().name;
+            var state = change.doc.data().state;
+            var program = change.doc.data().program;
+             $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
+            }
         });
-    }
+    });
+}
     function showTableData() {
         document.getElementById('info').innerHTML = "";
         var myTab = document.getElementById('table_id');

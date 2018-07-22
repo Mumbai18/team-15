@@ -14,7 +14,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="120dp"
         android:ems="10"
         android:hint="Enter your name!"
         android:inputType="textPersonName"
@@ -76,7 +76,7 @@
 
     <Button
         android:id="@+id/Submit"
-        android:layout_width="wrap_content"
+        android:layout_width="242dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"

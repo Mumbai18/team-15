@@ -109,7 +109,7 @@ if (document.getElementById('femaleRadioBtn').checked) {
   phone = phone.value;
   city = city.value;
   state = state.value;
-  var cityRef = db.collection('patients').doc();
+  var cityRef = db.collection('Patient').doc();
   var setWithMerge = cityRef.set({
       name: name,
       phone: phone,
@@ -178,7 +178,7 @@ if (document.getElementById('femaleRadioBtn').checked) {
                               <a href="videos.html">Programs</a>
                         </li>
                         <li>
-                            <a href = "logout.html">Logout</a>
+                            <a href = "logout.html">Login</a>
                         </li>
                   </ul>
             </div>
@@ -196,7 +196,7 @@ if (document.getElementById('femaleRadioBtn').checked) {
             <div >
                 <div class="contact-area style-two">
                     <div class="section-title text-center">
-                        <h3><span>Register Patient</span></h3>
+                        <h3><span>Register Donor</span></h3>
                     </div>
                     <form name="register_form" id ="register_form" class="default-form contact-form">
                         <div class="row">
@@ -215,28 +215,6 @@ if (document.getElementById('femaleRadioBtn').checked) {
                                     <label class="radio-inline"><input type="radio" name="optradio" id="maleRadioBtn">Male</label>
                                     <label class="radio-inline"><input type="radio" name="optradio" id="femaleRadioBtn">Female</label>  
                                 </div>  
-                                <label>Type of Cancer: </label> 
-                                <div class="form-group" id="type_cancer">
-                                    <select name="typeOfCancer" id="typeOfCancer">
-                                        <option>Blood Cancer</option>
-                                        <option>Lung Cancer</option>
-                                        <option>Breast Cancer</option>
-                                        <option>Bladder Cancer</option>
-                                        <option>Ovarian Cancer</option>
-                                        <option>Skin Cancer</option>
-                                        <option>Colon Cancer</option>
-                                        <option>Kidney Cancer</option>
-                                    </select>
-                                </div>  
-                                <label>Cancer Stage: </label> 
-                                <div class="form-group" id="stage_cancer">
-                                    <select name="stageOfCancer" id = "stageOfCancer">
-                                        <option>I</option>
-                                        <option>II</option>
-                                        <option>III</option>
-                                        <option>IV</option>
-                                    </select>
-                                </div>   
                                 <div class="form-group">
                                     <input type="text" name="City" placeholder="City" id="city" required="">
                                 </div>
@@ -247,9 +225,9 @@ if (document.getElementById('femaleRadioBtn').checked) {
                                 <div class="form-group">
                                     <select name="income" id="income">
                                         <option>less than 5000</option>
-                                        <option>Between 5,000 to 20,000</option>
-                                        <option>Between 20,000 to 50,000</option>
-                                        <option>Above 50,000</option>
+                                        <option>Between 500,000 to 10,00,000</option>
+                                        <option>Between 10,00,000 to 15,00,000 </option>
+                                        <option>Above 15,00,000</option>
                                     </select>
                                 </div>   
 

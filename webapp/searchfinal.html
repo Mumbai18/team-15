@@ -56,41 +56,41 @@ var tableToExcel = (function() {
   }
     state = state.toLowerCase();
     state = $.trim(state);
-
-    if(state === "")
-    {
-        db.collection("patients")
-        .onSnapshot(function(querySnapshot) { 
-            var cities = [];
-            querySnapshot.forEach(function(doc) {
-                var name = doc.data().name;
-                var state = doc.data().state;
-                var program = doc.data().program;
-                $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
-            });
-            
-            //document.write("Name of the Donors are:", cities.join(", "));
+db.collection("patients").where("state", "==", state)
+    .onSnapshot(function(snapshot) {
+        snapshot.docChanges().forEach(function(change) {
+            if (change.type === "added") {
+            var name = change.doc.data().name;
+            var state = change.doc.data().state;
+             var program = change.doc.data().program;
+            $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
+            }
+            if (change.type === "modified") {
+            var name = change.doc.data().name;
+             var state = change.doc.data().state;
+             var program = change.doc.data().program;
+              $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
+            }
+            if (change.type === "removed") {
+               var name = change.doc.data().name;
+            var state = change.doc.data().state;
+            var program = change.doc.data().program;
+             $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
+            }
         });
-    }
-    else
-    {
-        db.collection("patients").where("state", "==", state)
-        .onSnapshot(function(querySnapshot) { 
-            var cities = [];
-            querySnapshot.forEach(function(doc) {
-                var name = doc.data().name;
-                var state = doc.data().state;
-                var program = doc.data().program;
-                $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
-            });
-            
-            //document.write("Name of the Donors are:", cities.join(", "));
-        });
-    }
-
-
-
-	
+    });
+	// db.collection("Patient").where("state", "==", state)
+ //    .onSnapshot(function(querySnapshot) { 
+ //    	var cities = [];
+ //        querySnapshot.forEach(function(doc) {
+ //            var name = doc.data().name;
+ //            var state = doc.data().state;
+ //            var program = doc.data().program;
+ //            $("#table_body1").append("<tr><td>"+name+"</td> <td>"+state+"</td><td>"+program+"</td><td></td></tr>");
+ //        });
+ //        });
+ //        //document.write("Name of the Donors are:", cities.join(", "));
+ //    });
     function showTableData() {
         document.getElementById('info').innerHTML = "";
         var myTab = document.getElementById('table_id');
