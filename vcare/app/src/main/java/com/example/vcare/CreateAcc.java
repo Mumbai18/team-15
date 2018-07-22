@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +39,17 @@ public class CreateAcc extends AppCompatActivity {
 
                 String emailStr = emailAcc.getText().toString().trim();
                 String passStr = passAcc.getText().toString().trim();
+                if (TextUtils.isEmpty(emailStr)) {
+                    emailAcc.setError("Email is required");
+                    emailAcc.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(passStr)) {
+                    passAcc.setError("Email is required");
+                    passAcc.requestFocus();
+                    return;
+                }
                 createNewAccount(emailStr,passStr);
             }
         });
