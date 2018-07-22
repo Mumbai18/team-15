@@ -109,7 +109,7 @@ if (document.getElementById('femaleRadioBtn').checked) {
   phone = phone.value;
   city = city.value;
   state = state.value;
-  var cityRef = db.collection('Patient').doc();
+  var cityRef = db.collection('patients').doc();
   var setWithMerge = cityRef.set({
       name: name,
       phone: phone,
