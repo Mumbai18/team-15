@@ -1,4 +1,3 @@
-
   (function(){
   // Initialize Firebase
   //document.writeln("<script type='text/javascript' src='firebase.js'></script>");
@@ -11,10 +10,10 @@
     messagingSenderId: "341106678697"
   };
   firebase.initializeApp(config);*/
-  const txtEmail = document.getElementById('txtEmail');
-  const txtPassword = document.getElementById('txtPassword');
-  const btnLogin = document.getElementById('btnLogin');
-  const btnSignUp = document.getElementById('btnSignUp');
+  const txtEmail = document.getElementById('txtEmail1');
+  const txtPassword = document.getElementById('txtPassword1');
+  const btnLogin = document.getElementById('btnLogin1');
+  const btnSignUp = document.getElementById('btnSignUp1');
   /*const btnLogout = document.getElementById('btnLogout');*/
   btnLogin.addEventListener('click',e=>{
   const email = txtEmail.value;
@@ -80,7 +79,7 @@ btnSignUp.addEventListener('click', e=>{
 
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser){
-    window.location='dashboardVolunteer.html';
+    window.location='dashboardStaff.html';
     //console.log(firebaseUser);
     /*btnLogout.classList.remove('hide');*/
   } else {

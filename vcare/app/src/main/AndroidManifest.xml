@@ -11,10 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".FirstPage" >
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".FirstPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CreateAcc" />
-        <activity android:name=".VolInfo"></activity>
+        <activity android:name=".VolInfo" />
+        <activity android:name=".ListOfPatients"></activity>
     </application>
 
 </manifest>
