@@ -109,7 +109,7 @@ var tableToExcell = (function() {
         }
     };
 
-    db.collection("Patient")
+    db.collection("patients")
     .onSnapshot(function(querySnapshot) { 
         var cities = [];
         querySnapshot.forEach(function(doc) {

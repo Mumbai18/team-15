@@ -59,7 +59,7 @@ var tableToExcel = (function() {
 
     if(state === "")
     {
-        db.collection("Patient")
+        db.collection("patients")
         .onSnapshot(function(querySnapshot) { 
             var cities = [];
             querySnapshot.forEach(function(doc) {
@@ -74,7 +74,7 @@ var tableToExcel = (function() {
     }
     else
     {
-        db.collection("Patient").where("state", "==", state)
+        db.collection("patients").where("state", "==", state)
         .onSnapshot(function(querySnapshot) { 
             var cities = [];
             querySnapshot.forEach(function(doc) {
